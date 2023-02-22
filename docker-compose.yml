@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: .
+    image: nextwind:latest
+    restart: always
+    env_file:
+      - .env # in case you want to use .env file
+    environment:
+      NODE_ENV: production
+    working_dir: /app
+    networks:
+      - nextwind
+
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - webapp
+    networks:
+      - nextwind
+
+networks:
+  nextwind:

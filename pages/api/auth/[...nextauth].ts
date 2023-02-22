@@ -7,6 +7,7 @@ import GitHubProvider from 'next-auth/providers/github'
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
+  secret: process.env.NEXT_AUTH_SECRET,
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
@@ -33,5 +34,4 @@ export default NextAuth({
       return session
     },
   },
-  // ...
 })
