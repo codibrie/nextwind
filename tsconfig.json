@@ -18,7 +18,8 @@
       "@/components/*": ["components/*"],
       "@/hooks/*": ["hooks/*"],
       "@/store/*": ["store/*"],
-      "@/utils/*": ["libs/*"]
+      "@/utils/*": ["libs/*"],
+      "@/types/*": ["types/*"]
     },
     "incremental": true,
     "plugins": [
