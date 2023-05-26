@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+'use client'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 const User = () => {
@@ -18,7 +19,11 @@ const User = () => {
       {status === 'authenticated' && (
         <>
           <p className='text-sm font-medium'>Welcome, {data?.user.name}</p>
-          <img onClick={() => signOut()} className='w-8 h-8 rounded-full border-2' src={data?.user.image} alt='' />
+          {data?.user.image ? (
+            <img onClick={() => signOut()} className='w-8 h-8 rounded-full border-2' src={data.user?.image} alt='' />
+          ) : (
+            <div className='w-8 h-8 rounded-full border-2' />
+          )}
         </>
       )}
     </div>

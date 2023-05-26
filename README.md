@@ -39,7 +39,9 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 We're using Supabase with Next-Auth for authentication and authorization.
 
-For the integration, check and following the steps in Next-Auth documentation: https://next-auth.js.org/adapters/supabase
+> NOTE: You can import the schema from `supabase/schema.sql` to your Supabase instance.
+
+For the integration, check and following the steps in Next-Auth documentation: https://authjs.dev/reference/adapter/supabase
 
 After setting up your Supabase instance and configuration, generating types for your database is an important step towards improving your development workflow. By generating types, you can ensure type safety and catch potential errors earlier in the development process.
 
