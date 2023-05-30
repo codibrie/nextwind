@@ -1,6 +1,6 @@
 {
   "name": "nextwind",
-  "description": "TypeScript skeleton for Next.js, TailwindCSS and Zustand",
+  "description": "Introducing a powerful and efficient full-stack web development starter project built with TypeScript, Next.JS, Supabase, PostgreSQL, TailwindCSS, and Zustand!",
   "repository": "https://github.com/en3sis/nextwind",
   "version": "1.0.0",
   "author": "en3sis",
