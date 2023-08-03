@@ -8,6 +8,7 @@
   "rules": {
     "quotes": ["error", "single", { "avoidEscape": false, "allowTemplateLiterals": true }],
     "no-trailing-spaces": 1,
+    "newline-before-return": "error",
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/no-explicit-any": "off"
