@@ -1,8 +1,6 @@
-module.exports = {
-  reactStrictMode: true,
-  experimental: { appDir: true }, // It stills buggy, we need to wait for the next release.
-  output: 'standalone',
-  images: {
-    domains: ['upload.wikimedia.org'],
-  },
-}
+const { withContentlayer } = require("next-contentlayer");
+
+/** @type {import('next').NextConfig} */
+const nextConfig = { reactStrictMode: true, swcMinify: true };
+
+module.exports = withContentlayer(nextConfig);
