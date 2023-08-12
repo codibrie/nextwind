@@ -37,8 +37,8 @@ export default async function Layout({ children }: { children: React.ReactNode; 
       <head />
       <body className='bg-[#081113] p text-gray-300'>
         <ClientSessionProvider session={session}>
-          <Menu />
-          <div className='container grid mx-auto max-w-5xl h-screen p-4'>{children}</div>
+        <Menu />
+        <div className='container grid mx-auto max-w-5xl h-screen p-4'>{children}</div>
         </ClientSessionProvider>
       </body>
     </html>
