@@ -9,6 +9,16 @@ const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
 }
 
+
+export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
+
+export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+  if (!post) notFound()
+
+  return { title: post.title }
+}
+
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
   if (!post) notFound()
@@ -30,12 +40,3 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 }
 
 export default PostLayout
-
-export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
-
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
-  if (!post) notFound()
-
-  return { title: post.title }
-}
