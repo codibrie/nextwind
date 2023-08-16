@@ -36,3 +36,4 @@ yarn-error.log*
 
 #mdx
 .contentlayer
+.package-lock.json

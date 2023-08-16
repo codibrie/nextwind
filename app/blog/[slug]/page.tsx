@@ -1,14 +1,13 @@
-import { allPosts } from 'contentlayer/generated'
-import { notFound } from 'next/navigation'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+import { allPosts } from '@/contentlayer/generated'
 import type { MDXComponents } from 'mdx/types'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { notFound } from 'next/navigation'
 
 import Link from 'next/link'
 
 const mdxComponents: MDXComponents = {
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
 }
-
 
 export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
 

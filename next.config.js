@@ -1,6 +1,11 @@
-const { withContentlayer } = require("next-contentlayer");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { withContentlayer } = require('next-contentlayer')
 
-/** @type {import('next').NextConfig} */
-const nextConfig = { reactStrictMode: true, swcMinify: true };
-
-module.exports = withContentlayer(nextConfig);
+module.exports = withContentlayer({
+  reactStrictMode: true,
+  experimental: { serverActions: true },
+  output: 'standalone',
+  images: {
+    domains: ['upload.wikimedia.org'],
+  },
+})
