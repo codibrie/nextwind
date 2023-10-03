@@ -4,7 +4,7 @@ const { withContentlayer } = require('next-contentlayer')
 module.exports = withContentlayer({
   reactStrictMode: true,
   experimental: { serverActions: true },
-  output: 'standalone',
+  // output: 'standalone', # Enable for Docker Deployments
   images: {
     domains: ['upload.wikimedia.org'],
   },
