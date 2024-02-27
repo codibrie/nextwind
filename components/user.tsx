@@ -18,7 +18,9 @@ const Login = (props: UserProps) => {
     <div className='flex items-center gap-2'>
       {data?.length === 0 && (
         <div className='flex gap-3'>
-          <button onClick={() => DiscordLogin()} className='border-r border-white pr-3'>Sign In with Discord</button>
+          <button onClick={() => DiscordLogin()} className='border-r border-white pr-3'>
+            Sign In with Discord
+          </button>
           <button onClick={() => GoogleLogin()}>Sign In with Google</button>
           <div className='w-8 h-8 rounde-full border-2' />
         </div>

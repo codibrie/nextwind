@@ -8,7 +8,6 @@ interface UserProps {
 }
 
 export const Menu = (props: UserProps) => {
-
   const { user } = props
 
   return (
