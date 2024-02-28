@@ -4,7 +4,7 @@ import { Database } from '@/types/database.types'
 
 export type User = Database['public']['Tables']['users']['Row']
 interface UserProps {
-  user: User[] | null
+  user: User | null
 }
 
 export const Menu = (props: UserProps) => {

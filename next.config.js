@@ -5,6 +5,6 @@ module.exports = withContentlayer({
   reactStrictMode: true,
   // output: 'standalone', # Enable for Docker Deployments
   images: {
-    domains: ['upload.wikimedia.org'],
+    domains: ['upload.wikimedia.org', 'cdn.discordapp.com'],
   },
 })

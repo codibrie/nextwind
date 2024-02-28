@@ -4,18 +4,14 @@ import { redirect } from 'next/navigation'
 
 import { createClient } from './server'
 
-export async function GoogleLogin() {
-  const supabase = createClient()
+const getURL = () => {
+  let url = process?.env?.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000/'
 
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL },
-  })
+  url = url.includes('http') ? url : `https://${url}`
 
-  if (error) {
-    console.log(error)
-    redirect('/error')
-  }
+  url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
+
+  return url
 }
 
 export async function DiscordLogin() {
@@ -23,26 +19,24 @@ export async function DiscordLogin() {
 
   const { error, data } = await supabase.auth.signInWithOAuth({
     provider: 'discord',
-    options: { redirectTo: process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL },
+    options: {
+      redirectTo: `${getURL()}auth/callback`,
+    },
   })
-
-  console.log('discord', data)
 
   if (error) {
     console.log(error)
     redirect('/error')
+  } else {
+    redirect(data.url)
   }
 }
 
-export async function EmailLogin(formData: FormData) {
+export const handleLogout = async () => {
   const supabase = createClient()
+  const { error } = await supabase.auth.signOut()
 
-  const { error } = await supabase.auth.signInWithOtp({
-    email: formData.get('email') as string,
-  })
-
-  if (error) {
-    console.log(error)
-    redirect('/error')
+  if (!error) {
+    redirect('/')
   }
 }

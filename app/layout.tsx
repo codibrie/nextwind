@@ -15,14 +15,19 @@ export interface DashboardLayoutProps {
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const supabase = createClient()
+  let _user
+  let _error
 
-  const { data: user, error } = await supabase.from('users').select('*')
+  const { data: session, error: sessionError } = await supabase.auth.getSession()
 
-  console.log('data', user)
-  console.log('error', error)
+  if (session.session) {
+    const { data: user, error } = await supabase.auth.getUser()
+    _user = user
+    _error = error
+  }
 
-  if (error) {
-    console.error(error)
+  if (_error || sessionError) {
+    console.error(_error || sessionError)
 
     return null
   }
@@ -31,7 +36,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     <html>
       <head />
       <body className='bg-[#081113] text-gray-300' cz-shortcut-listen='true'>
-        <Menu user={user} />
+        <Menu user={_user} />
         <div className='container grid mx-auto max-w-5xl h-screen p-4'>{children}</div>
       </body>
     </html>
